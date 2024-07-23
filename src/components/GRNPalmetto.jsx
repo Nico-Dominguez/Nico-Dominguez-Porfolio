@@ -10,7 +10,6 @@ const GRNPalmetto = () => {
   const galleryItems = [
     { type: "image", src: "/palmetto/pal-2.jpg", alt: "Image 1" },
     { type: "image", src: "/palmetto/pal-3.png", alt: "Image 2" },
-    { type: "video", src: "/palmetto/pal-1.mp4" },
   ];
 
   return (
@@ -82,20 +81,11 @@ const GRNPalmetto = () => {
             >
               &times;
             </button>
-            {selectedItem.type === "image" ? (
-              <img
-                src={selectedItem.src}
-                alt={selectedItem.alt}
-                className="max-w-full max-h-full"
-              />
-            ) : (
-              <video
-                src={selectedItem.src}
-                autoPlay
-                controls
-                className="max-w-full max-h-full"
-              />
-            )}
+            <img
+              src={selectedItem.src}
+              alt={selectedItem.alt}
+              className="max-w-full max-h-full"
+            />
           </div>
         </div>
       )}
