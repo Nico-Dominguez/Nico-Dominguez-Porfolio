@@ -49,7 +49,7 @@ const Navbar = () => {
             mailto="mailto:98nicodominguez@gmail.com"
           />
           <a
-            href="/Nicolas-Dominguez-Resume.docx.pdf"
+            href="/Nico-Dominguez-Resume.pdf"
             className="text-blue-700 hover:text-blue-900 dark:text-blue-50 dark:hover:text-blue-400 hover:underline"
           >
             Resume
@@ -71,7 +71,7 @@ const Navbar = () => {
             mailto="mailto:98nicodominguez@gmail.com"
           />
           <a
-            href="/Nicolas-Dominguez-Resume.docx.pdf"
+            href="/Nico-Dominguez-Resume.pdf"
             className="block text-center hover:underline sm:text-left text-blue-800 dark:text-blue-50dark:bg-blue-900 border-b-blue-700 py-2 px-4 w-full dark:hover:bg-blue-700"
           >
             Resume
