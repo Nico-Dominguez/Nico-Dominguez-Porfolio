@@ -5,20 +5,17 @@ const GRNAtlantaNorth = () => {
   const [selectedItem, setSelectedItem] = useState(null);
 
   const galleryItems = [
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 1" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 2" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 3" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 4" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 5" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 6" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 7" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 8" },
-    { type: "video", src: "/path/to/video.mp4" },
+    { type: "image", src: "/dublin/dub-1.png", alt: "Image 1" },
+    { type: "image", src: "/dublin/dub-2.png", alt: "Image 2" },
+    { type: "image", src: "/dublin/dub-3.png", alt: "Image 3" },
+    { type: "image", src: "/dublin/dub-4.png", alt: "Image 4" },
   ];
 
   return (
     <div className="flex flex-col gap-4 p-6">
-      <h1 className="text-2xl font-bold mb-4 text-rose-200">GRN Dublin</h1>
+      <h1 className="text-2xl font-bold mb-4 text-rose-600 dark:text-rose-300">
+        GRN Dublin
+      </h1>
       <div className="flex flex-col gap-5 bg-rose-700 rounded">
         <div className="flex flex-col-reverse items-center gap-6 lg:flex-row-reverse p-6">
           <p className="lg:w-1/2">
@@ -57,18 +54,11 @@ const GRNAtlantaNorth = () => {
                 className="cursor-pointer w-64 h-48 bg-gray-200 flex-shrink-0"
                 onClick={() => setSelectedItem(item)}
               >
-                {item.type === "image" ? (
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <video
-                    src={item.src}
-                    className="w-full h-full object-cover"
-                  />
-                )}
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="w-full h-full object-cover"
+                />
               </div>
             ))}
           </div>
@@ -76,10 +66,10 @@ const GRNAtlantaNorth = () => {
       </div>
 
       {selectedItem && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
           <div className="max-w-3xl max-h-[80vh] relative">
             <button
-              className="absolute top-4 right-4 text-white text-2xl"
+              className="absolute font-bold top-[-70px] right-4 text-4xl text-slate-900 px-3 py-1 bg-rose-600 rounded"
               onClick={() => setSelectedItem(null)}
             >
               &times;

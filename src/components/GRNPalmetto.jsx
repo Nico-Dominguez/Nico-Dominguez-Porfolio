@@ -8,15 +8,9 @@ const GRNPalmetto = () => {
   const [selectedItem, setSelectedItem] = useState(null);
 
   const galleryItems = [
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 1" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 2" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 3" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 4" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 5" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 6" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 7" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 8" },
-    { type: "video", src: "/path/to/video.mp4" },
+    { type: "image", src: "/palmetto/pal-2.jpg", alt: "Image 1" },
+    { type: "image", src: "/palmetto/pal-3.png", alt: "Image 2" },
+    { type: "video", src: "/palmetto/pal-1.mp4" },
   ];
 
   return (
@@ -68,18 +62,11 @@ const GRNPalmetto = () => {
                 className="cursor-pointer w-64 h-48 bg-gray-200 flex-shrink-0"
                 onClick={() => setSelectedItem(item)}
               >
-                {item.type === "image" ? (
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <video
-                    src={item.src}
-                    className="w-full h-full object-cover"
-                  />
-                )}
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="w-full h-full object-cover"
+                />
               </div>
             ))}
           </div>
@@ -87,10 +74,10 @@ const GRNPalmetto = () => {
       </div>
 
       {selectedItem && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
           <div className="max-w-3xl max-h-[80vh] relative">
             <button
-              className="absolute top-4 right-4 text-white text-2xl"
+              className="absolute font-bold top-[-70px] right-4 text-4xl text-slate-900 px-3 py-1 bg-yellow-600 rounded"
               onClick={() => setSelectedItem(null)}
             >
               &times;

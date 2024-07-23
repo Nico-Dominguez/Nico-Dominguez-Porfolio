@@ -5,20 +5,15 @@ const GRNAtlantaNorth = () => {
   const [selectedItem, setSelectedItem] = useState(null);
 
   const galleryItems = [
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 1" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 2" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 3" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 4" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 5" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 6" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 7" },
-    { type: "image", src: "/Nico-Headshot.png", alt: "Image 8" },
-    { type: "video", src: "/path/to/video.mp4" },
+    { type: "image", src: "/atlanta/atl-1.png", alt: "Image 1" },
+    { type: "image", src: "/atlanta/atl-2.png", alt: "Image 2" },
+    { type: "image", src: "/atlanta/atl-3.jpg", alt: "Image 3" },
+    { type: "image", src: "/atlanta/Tagline.png", alt: "Image 4" },
   ];
 
   return (
     <div className="p-6 flex flex-col gap-4">
-      <h1 className="text-2xl font-bold mb-4 text-indigo-200">
+      <h1 className="text-2xl font-bold mb-4 text-indigo-600 dark:text-indigo-300">
         GRN Atlanta North
       </h1>
       <div className="flex flex-col gap-5 bg-indigo-700 rounded">
@@ -69,18 +64,11 @@ const GRNAtlantaNorth = () => {
                 className="cursor-pointer w-64 h-48 bg-gray-200 flex-shrink-0"
                 onClick={() => setSelectedItem(item)}
               >
-                {item.type === "image" ? (
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <video
-                    src={item.src}
-                    className="w-full h-full object-cover"
-                  />
-                )}
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="w-full h-full object-cover"
+                />
               </div>
             ))}
           </div>
@@ -88,13 +76,13 @@ const GRNAtlantaNorth = () => {
       </div>
 
       {selectedItem && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
           <div className="max-w-3xl max-h-[80vh] relative">
             <button
-              className="absolute top-4 right-4 text-white text-2xl"
+              className="absolute font-bold top-[-70px] right-4 text-4xl text-slate-900 px-3 py-1 bg-indigo-600 rounded"
               onClick={() => setSelectedItem(null)}
             >
-              &times;
+              X
             </button>
             {selectedItem.type === "image" ? (
               <img
@@ -127,61 +115,6 @@ const GRNAtlantaNorth = () => {
           audience.
         </p>
       </div>
-
-      {/* gallery */}
-      <div className="mt-8">
-        <div className="overflow-x-auto scrollbar scrollbar-thumb-indigo-700">
-          <div className="flex gap-4 pb-4" style={{ minWidth: "max-content" }}>
-            {galleryItems.map((item, index) => (
-              <div
-                key={index}
-                className="cursor-pointer w-64 h-48 bg-gray-200 flex-shrink-0"
-                onClick={() => setSelectedItem(item)}
-              >
-                {item.type === "image" ? (
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <video
-                    src={item.src}
-                    className="w-full h-full object-cover"
-                  />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {selectedItem && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-          <div className="max-w-3xl max-h-[80vh] relative">
-            <button
-              className="absolute top-4 right-4 text-white text-2xl"
-              onClick={() => setSelectedItem(null)}
-            >
-              &times;
-            </button>
-            {selectedItem.type === "image" ? (
-              <img
-                src={selectedItem.src}
-                alt={selectedItem.alt}
-                className="max-w-full max-h-full"
-              />
-            ) : (
-              <video
-                src={selectedItem.src}
-                autoPlay
-                controls
-                className="max-w-full max-h-full"
-              />
-            )}
-          </div>
-        </div>
-      )}
 
       <div className="flex gap-4 flex-col bg-indigo-700 rounded p-6">
         <h1 className="text-2xl font-bold mb-4">Marketing Content</h1>

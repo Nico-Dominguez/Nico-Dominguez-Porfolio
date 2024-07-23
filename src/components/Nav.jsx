@@ -43,7 +43,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop menu */}
-        <div className="hidden md:flex space-x-4">
+        <div className="hidden md:flex items-center space-x-4">
           <ButtonMailto
             label="Contact"
             mailto="mailto:98nicodominguez@gmail.com"
@@ -65,14 +65,14 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden">
+        <div className="md:hidden bg-blue-100">
           <ButtonMailto
             label="Contact"
             mailto="mailto:98nicodominguez@gmail.com"
           />
           <a
             href="/Nicolas-Dominguez-Resume.docx.pdf"
-            className="block text-center sm:text-left text-blue-800 dark:text-blue-50 bg-blue-100 dark:bg-blue-900 border-b-blue-700 py-2 px-4 w-full hover:bg-blue-700 hover:text-blue-50 dark:hover:bg-blue-700"
+            className="block text-center hover:underline sm:text-left text-blue-800 dark:text-blue-50dark:bg-blue-900 border-b-blue-700 py-2 px-4 w-full dark:hover:bg-blue-700"
           >
             Resume
           </a>
