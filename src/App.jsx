@@ -28,7 +28,7 @@ function App() {
                 element={
                   <>
                     <Hero />
-                    <div className="flex flex-col xl:flex-row gap-6">
+                    <div className="flex flex-col xl:flex-row gap-4">
                       <About />
                       <Projects />
                     </div>
