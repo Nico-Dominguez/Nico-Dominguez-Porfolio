@@ -14,7 +14,7 @@ const Hero = () => {
               <span className="italic font-serif text-blue-900 dark:text-blue-300">
                 Nico
               </span>
-              , an aspiring{" "}
+              , a{" "}
               <span className="font-bold">Digital Marketing Specialist</span>{" "}
               based in{" "}
               <span className="font-serif italic text-blue-900 dark:text-blue-300">
