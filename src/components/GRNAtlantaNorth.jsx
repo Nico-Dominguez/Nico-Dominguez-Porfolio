@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 const GRNAtlantaNorth = () => {
   const [selectedItem, setSelectedItem] = useState(null);
+  const modalRef = useRef(null);
 
   const galleryItems = [
     { type: "image", src: "/atlanta/atl-1.png", alt: "Image 1" },
@@ -10,6 +11,19 @@ const GRNAtlantaNorth = () => {
     { type: "image", src: "/atlanta/atl-3.jpg", alt: "Image 3" },
     { type: "image", src: "/atlanta/Tagline.png", alt: "Image 4" },
   ];
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setSelectedItem(null);
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
     <div className="p-6 flex flex-col gap-4">
@@ -73,10 +87,10 @@ const GRNAtlantaNorth = () => {
         <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
           <div className="max-w-3xl max-h-[80vh] relative">
             <button
-              className="absolute font-bold top-[-70px] right-4 text-4xl text-slate-900 px-3 py-1 bg-blue-800 dark:bg-blue-50 dark:bg-opacity-10 shadow-xl backdrop-blur-lg border-2 border-blue-500"
+              className="absolute font-bold top-[-70px] right-4 text-4xl px-3 py-1 dark:bg-opacity-10 shadow-xl backdrop-blur-lg border-2 border-blue-500"
               onClick={() => setSelectedItem(null)}
             >
-              X
+              &times;
             </button>
             {selectedItem.type === "image" ? (
               <img
