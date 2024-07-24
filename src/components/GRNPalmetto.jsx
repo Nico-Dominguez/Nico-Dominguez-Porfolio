@@ -20,9 +20,9 @@ const GRNPalmetto = () => {
       <div className="flex flex-col gap-5">
         <div className="flex flex-col-reverse items-center gap-6 lg:flex-row-reverse p-6 rounded bg-blue-800 dark:bg-white dark:bg-opacity-10 shadow-xl border-2 border-blue-500">
           <p className="lg:w-1/2">
-            At GRN Palmetto, where I spent three and a half years, I dove into
-            research and analysis to understand their audience and competitors.
-            I crafted a brand strategy focused on simplicity, authenticity, and
+            At GRN Palmetto, where I spent over four years, I dove into research
+            and analysis to understand their audience and competitors. I crafted
+            a brand strategy focused on simplicity, authenticity, and
             consistency. This included designing a new logo and establishing a
             cohesive visual identity and tone of voice. The result? A more
             recognizable brand with heightened awareness and customer

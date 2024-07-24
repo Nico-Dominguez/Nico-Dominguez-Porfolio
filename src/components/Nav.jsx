@@ -49,7 +49,7 @@ const Navbar = () => {
             mailto="mailto:98nicodominguez@gmail.com"
           />
           <a
-            href="/NicoDominguezResume.pdf"
+            href="/Nicolas-Dominguez--Resume.docx.pdf"
             className="text-blue-700 hover:text-blue-900 dark:text-blue-50 dark:hover:text-blue-200 hover:underline"
           >
             Resume

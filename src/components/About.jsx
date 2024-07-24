@@ -7,7 +7,7 @@ const About = () => {
       <p className="leading-[1.8rem] font-light">
         Hi! I'm a marketing professional with{" "}
         <span className="underline underline-offset-[5px] decoration-wavy">
-          three years
+          four plus years
         </span>{" "}
         of experience. In my previous roles, I planned and executed successful
         marketing campaigns on social media and through content marketing. My
