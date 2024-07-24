@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -6,15 +6,29 @@ import { Link } from "react-router-dom";
 
 const GRNPalmetto = () => {
   const [selectedItem, setSelectedItem] = useState(null);
+  const modalRef = useRef(null);
 
   const galleryItems = [
     { type: "image", src: "/palmetto/pal-2.jpg", alt: "Image 1" },
     { type: "image", src: "/palmetto/pal-3.png", alt: "Image 2" },
   ];
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setSelectedItem(null);
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
-    <div className="p-6 flex flex-col gap-4  text-blue-50">
-      <h1 className="text-2xl font-bold mb-4 text-blue-700 dark:text-blue-200">
+    <div className="p-6 flex flex-col gap-4">
+      <h1 className="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-300">
         GRN Palmetto
       </h1>
       <div className="flex flex-col gap-5">
