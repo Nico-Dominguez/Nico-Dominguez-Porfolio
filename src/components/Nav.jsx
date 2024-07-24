@@ -65,14 +65,14 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-blue-100">
+        <div className="md:hidden">
           <ButtonMailto
             label="Contact"
             mailto="mailto:98nicodominguez@gmail.com"
           />
           <a
-            href="/NicoDominguezResume.pdf"
-            className="block text-center hover:underline sm:text-left text-blue-800 dark:text-blue-50dark:bg-blue-900 border-b-blue-700 py-2 px-4 w-full dark:hover:bg-blue-700"
+            href="/Nicolas-Dominguez--Resume.docx.pdf"
+            className="block text-center hover:underline py-2 px-4 w-full sm:text-left text-blue-800 dark:text-blue-50 dark:hover:bg-blue-700"
           >
             Resume
           </a>

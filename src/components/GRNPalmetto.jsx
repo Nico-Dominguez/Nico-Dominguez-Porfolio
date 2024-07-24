@@ -51,7 +51,7 @@ const GRNPalmetto = () => {
             </div>
             <div>
               <h3 className="font-bold text-xl lg:text-2xl">Date:</h3>
-              <p className="italic font-serif">August 2020 - March 2024</p>
+              <p className="italic font-serif">Janurary 2020 - March 2024</p>
             </div>
           </div>
         </div>
@@ -128,7 +128,7 @@ const GRNPalmetto = () => {
           <p>
             Implemented effective social media strategies: Engaged the target
             audience and fostered community growth, resulting in an 800%
-            increase in follower count over 3 years.
+            increase in follower count over 4 years.
           </p>
           <p>
             Optimized marketing efforts: Used data-driven strategies to improve

@@ -5,7 +5,7 @@ const ButtonMailto = ({ mailto, label }) => {
   return (
     <Link
       to="#"
-      className="block text-center sm:text-left hover:underline text-blue-800 dark:text-blue-50 dark:hover:text-blue-200 sm:py-2 px-4 w-full"
+      className="block text-center hover:underline py-2 px-4 w-full sm:text-left text-blue-800 dark:text-blue-50 dark:hover:bg-blue-700"
       onClick={(e) => {
         window.location.href = mailto;
         e.preventDefault();
