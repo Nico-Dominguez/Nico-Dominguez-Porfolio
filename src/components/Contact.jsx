@@ -13,7 +13,12 @@ const Contact = () => {
     { title: "Graphic Design" },
     { title: "Metric & Analytics" },
     { title: "SEM" },
-    { title: "Web Development" },
+    { title: "Web Design" },
+    { title: "HTML" },
+    { title: "CSS" },
+    { title: "Javascript" },
+    { title: "React" },
+    { title: "Wordpress" },
   ];
   return (
     <div className=" flex flex-col-reverse lg:flex-row gap-4 rounded">
@@ -51,7 +56,7 @@ const Contact = () => {
           {items.map((item, index) => (
             <div
               key={index}
-              className="p-2 bg-blue-300 text-blue-950 rounded-full select-none font-bold"
+              className="p-2 py-1 bg-blue-300 text-blue-800 rounded-full select-none font-bold border-2 border-blue-400"
             >
               {item.title}
             </div>
