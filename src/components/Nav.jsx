@@ -50,7 +50,7 @@ const Navbar = () => {
           />
           <a
             href="/Nicolas-Dominguez--Resume.docx.pdf"
-            className="text-blue-700 hover:text-blue-900 dark:text-blue-50 dark:hover:text-blue-200 hover:underline"
+            className="text-blue-700 hover:text-blue-900 dark:text-white hover:underline"
           >
             Resume
           </a>
@@ -72,7 +72,7 @@ const Navbar = () => {
           />
           <a
             href="/Nicolas-Dominguez--Resume.docx.pdf"
-            className="block text-center hover:underline py-2 px-4 w-full sm:text-left text-blue-800 dark:text-blue-50 dark:hover:bg-blue-700"
+            className="block text-center hover:underline py-2 px-4 w-full sm:text-left text-blue-800 dark:text-white"
           >
             Resume
           </a>
