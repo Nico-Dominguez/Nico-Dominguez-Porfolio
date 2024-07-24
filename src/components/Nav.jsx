@@ -8,11 +8,11 @@ const Navbar = () => {
   const { isDarkMode, toggleDarkMode } = useContext(ThemeContext);
 
   return (
-    <nav className="bg-white dark:bg-blue-950 p-4 mb-3">
+    <nav className="p-4 mb-3">
       <div className="container mx-auto flex items-center gap-4">
         <Link
           to="/"
-          className="text-white dark:text-blue-700 dark:bg-blue-100 font-bold text-xl mr-auto p-4 bg-blue-700 rounded-full"
+          className="text-blue-700 dark:text-blue-50 font-bold text-xl mr-auto"
         >
           Nicolas Dominguez
         </Link>
@@ -45,19 +45,19 @@ const Navbar = () => {
         {/* Desktop menu */}
         <div className="hidden md:flex items-center space-x-4">
           <ButtonMailto
-            label="Contact"
+            label="Email Me"
             mailto="mailto:98nicodominguez@gmail.com"
           />
           <a
             href="/NicoDominguezResume.pdf"
-            className="text-blue-700 hover:text-blue-900 dark:text-blue-50 dark:hover:text-blue-400 hover:underline"
+            className="text-blue-700 hover:text-blue-900 dark:text-blue-50 dark:hover:text-blue-200 hover:underline"
           >
             Resume
           </a>
         </div>
         <button
           onClick={toggleDarkMode}
-          className="p-2 rounded-full bg-blue-300 dark:bg-blue-600 text-gray-800 dark:text-gray-200"
+          className="p-2 rounded bg-blue-200 dark:bg-blue-800 text-gray-800 dark:text-gray-200"
         >
           {isDarkMode ? "🌞" : "🌙"}
         </button>

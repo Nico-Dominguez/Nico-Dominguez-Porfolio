@@ -17,8 +17,8 @@ const Contact = () => {
   ];
   return (
     <div className=" flex flex-col-reverse lg:flex-row gap-4 rounded">
-      <div className="lg:w-1/2 bg-blue-700 p-6 rounded flex gap-4 flex-col ">
-        <h1 className="text-center sm:text-left font-bold italic font-serif text-xl">
+      <div className="lg:w-1/2 bg-gradient-to-tr from-blue-700 to-blue-500 p-6 rounded flex gap-4 flex-col ">
+        <h1 className="text-center sm:text-left font-bold italic font-serif text-3xl">
           Contact Me:
         </h1>
         <div className="flex flex-col gap-12">
@@ -43,8 +43,8 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <div className="lg:w-1/2 bg-blue-700 p-6 rounded flex gap-4 flex-col ">
-        <h1 className="text-center sm:text-left font-bold italic font-serif text-xl">
+      <div className="lg:w-1/2 bg-gradient-to-tl from-blue-700 to-blue-500 p-6 rounded flex gap-4 flex-col ">
+        <h1 className="text-center sm:text-left font-bold italic font-serif text-3xl">
           Skills
         </h1>
         <div className="flex flex-wrap gap-3">

@@ -13,24 +13,21 @@ const GRNAtlantaNorth = () => {
 
   return (
     <div className="flex flex-col gap-4 p-6">
-      <h1 className="text-2xl font-bold mb-4 text-rose-600 dark:text-rose-300">
+      <h1 className="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-300">
         GRN Dublin
       </h1>
-      <div className="flex flex-col gap-5 bg-rose-700 rounded">
+      <div className="flex flex-col gap-5 bg-blue-800 dark:bg-blue-50 dark:bg-opacity-10 shadow-xl backdrop-blur-lg border-2 border-blue-500 rounded">
         <div className="flex flex-col-reverse items-center gap-6 lg:flex-row-reverse p-6">
-          <p className="lg:w-1/2">
-            While actively contributing to GRN Palmetto, I received an outreach
-            from GRN Dublin, who had taken notice of the impactful work I had
-            executed for Palmetto. Recognizing their need for a Marketing
-            professional to revitalize their brand and establish a consistent
-            brand image, I eagerly took on the opportunity. To begin, I
-            diligently conducted industry research, striving to comprehend the
-            unique landscape in which they operate. Collaborating closely with
-            the president, Bill Owad, I formulated compelling content that
-            genuinely mirrored the essence of their company, ultimately
-            rejuvenating their brand identity.
+          <p className="md:w-1/2">
+            While working at GRN Palmetto, GRN Dublin noticed my impactful work
+            and reached out for help with their branding. Eager for the
+            challenge, I jumped in to revitalize their brand and create a
+            consistent image. I started with thorough industry research and
+            worked closely with President Bill Owad to develop content that
+            truly captured their company’s essence, successfully refreshing
+            their brand identity.
           </p>
-          <div className="w-1/2 flex flex-col text-left ml-10  gap-5 lg:gap-14 justify-center">
+          <div className="md:w-1/2 flex flex-col text-left ml-10  gap-5 lg:gap-14 justify-center">
             <div>
               <h3 className="font-bold text-xl lg:text-2xl mb-3">My Role:</h3>
               <p className="font-serif italic">Digital Marketer</p>
@@ -46,7 +43,7 @@ const GRNAtlantaNorth = () => {
 
       {/* gallery */}
       <div className="mt-8">
-        <div className="overflow-x-auto scrollbar scrollbar-thumb-rose-700">
+        <div className="overflow-x-auto scrollbar scrollbar-thumb-blue-700">
           <div className="flex gap-4 pb-4" style={{ minWidth: "max-content" }}>
             {galleryItems.map((item, index) => (
               <div
@@ -69,7 +66,7 @@ const GRNAtlantaNorth = () => {
         <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
           <div className="max-w-3xl max-h-[80vh] relative">
             <button
-              className="absolute font-bold top-[-70px] right-4 text-4xl text-slate-900 px-3 py-1 bg-rose-600 rounded"
+              className="absolute font-bold top-[-70px] right-4 text-4xl text-slate-900 px-3 py-1 bg-blue-800 dark:bg-blue-50 dark:bg-opacity-10 shadow-xl backdrop-blur-lg border-2 border-blue-500"
               onClick={() => setSelectedItem(null)}
             >
               &times;
@@ -92,53 +89,62 @@ const GRNAtlantaNorth = () => {
         </div>
       )}
       {/* next section */}
-
-      <div className="flex gap-4 flex-col bg-rose-700 rounded p-6">
-        <h1 className="text-2xl font-bold mb-4">Marketing Content</h1>
-        <p>
-          Undertaking a project to revamp a client's social media presence and
-          develop engaging marketing content for their audience can be both
-          thrilling and demanding. GRN Dublin approached me seeking a
-          comprehensive content rebranding, accompanied by the creation of
-          distinctive graphics that would set them apart from their competitors.
-          Through the creation of exceptional marketing content, precisely
-          tailored to align with the client's brand strategy and resonate with
-          their target audience, we aimed to attract companies and potential
-          candidates in the life sciences and biomedical industry, establishing
-          GRN Dublin as an appealing partner for collaboration.
-        </p>
-        <p>
-          To start my work, I began by crafting a job posting template that
-          effectively conveyed information about open positions and candidates
-          seeking new job opportunities. The job template was thoughtfully
-          designed to embody the essence of Dublin's brand, employing their logo
-          and colors consistently throughout. To ensure maximum visibility and
-          reach, the job posts were consistently uploaded to their LinkedIn
-          platform, maintaining a cohesive and recognizable brand presence.
-        </p>
-        <p>
-          In addition to crafting job templates, I successfully developed a
-          range of diverse marketing content including flyers, infographics, and
-          comprehensive job packets tailored specifically for C-level positions.
-          This collaborative process of refreshing the client's social media
-          presence and delivering impactful marketing content has proven to be
-          an invaluable experience, granting me insights into working closely
-          with clients and producing content for prominent corporations. The
-          knowledge gained from this endeavor has been instrumental in expanding
-          my expertise in client collaboration and content creation for larger
-          organizations.
-        </p>
+      <div className="flex flex-col md:flex-row gap-4">
+        <div className="md:w-1/2 flex gap-4 flex-col p-6 bg-blue-800 dark:bg-blue-50 dark:bg-opacity-10 shadow-xl backdrop-blur-lg border-2 border-blue-500">
+          <h1 className="text-2xl font-bold mb-4">Marketing Content</h1>
+          <p>
+            Revamping GRN Dublin’s social media and marketing content was both
+            exciting and challenging. They wanted a complete content rebranding
+            with standout graphics to differentiate them from competitors. My
+            goal was to create marketing content that aligned with their brand
+            strategy and resonated with the life sciences and biomedical
+            sectors, helping them attract top companies and candidates.
+          </p>
+          <p>
+            I started by designing a job posting template that captured Dublin's
+            brand with consistent use of their logo and colors. I ensured these
+            posts were visible and cohesive by regularly updating their LinkedIn
+            profile.
+          </p>
+          <p>
+            In addition, I created a variety of marketing materials, including
+            flyers, infographics, and detailed job packets for C-level
+            positions. This project was a valuable experience, enhancing my
+            skills in client collaboration and content creation for large
+            organizations.
+          </p>
+        </div>
+        <div className="md:w-1/2 flex gap-4 flex-col p-6 bg-blue-800 dark:bg-blue-50 dark:bg-opacity-10 shadow-xl backdrop-blur-lg border-2 border-blue-500 ">
+          <h1 className="text-2xl font-bold mb-4">The Result</h1>
+          <p>
+            Developed and executed marketing campaigns: Designed and implemented
+            effective marketing strategies, resulting in a 21.8% engagement rate
+            on LinkedIn over a 6-month period.
+          </p>
+          <p>
+            Implemented social media strategies: Enhanced brand visibility and
+            market penetration by 22.9% through A/B testing and post-scheduling,
+            demonstrating effective client engagement and communication.
+          </p>
+          <p>
+            Created marketing assets: Produced videos, graphics, and marketing
+            materials using Adobe Creative Suite, aligning with modern UI trends
+            and showcasing proficiency in tools essential for high-quality
+            presentations.
+          </p>
+        </div>
       </div>
+
       <div className="flex w-full gap-4 justify-center mt-7">
         <Link
           to="/project/grn-atlanta-north"
-          className="w-1/4 px-4 py-2 bg-rose-500 text-white rounded hover:bg-rose-600 transition duration-300 text-center shadow-lg shadow-rose-500/50"
+          className="w-1/4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300 text-center shadow-lg shadow-blue-500/50"
         >
           Previous
         </Link>
         <Link
           to="/project/grn-palmetto"
-          className="w-1/4 px-4 py-2 bg-rose-500 text-white rounded hover:bg-rose-600 transition duration-300 text-center shadow-lg shadow-rose-500/50"
+          className="w-1/4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300 text-center shadow-lg shadow-blue-500/50"
         >
           Next
         </Link>

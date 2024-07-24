@@ -19,7 +19,7 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <div className="min-h-screen bg-white dark:bg-blue-950 text-white dark:text-blue-50">
+        <div className="min-h-screen text-white font-light bg-gradient-to-bl from-white to-blue-200 dark:bg-gradient-to-bl dark:from-blue-500 dark:to-blue-950">
           <Navbar />
           <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
             <Routes>
