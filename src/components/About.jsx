@@ -3,7 +3,7 @@ import React from "react";
 const About = () => {
   return (
     <div className="bg-gradient-to-tr from-blue-700 to-blue-500 p-6 shadow-lg flex flex-col gap-4 rounded">
-      <h1 className="font-serif italic text-2xl font-bold">About me</h1>
+      <h1 className="font-serif italic text-3xl font-bold">About me</h1>
       <p className="leading-[1.8rem] font-light">
         Hi! I'm a marketing professional with{" "}
         <span className="underline underline-offset-[5px] decoration-wavy">
