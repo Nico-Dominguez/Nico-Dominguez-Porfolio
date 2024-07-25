@@ -3,11 +3,17 @@ import { Link } from "react-router-dom";
 
 const GRNPalmetto = () => {
   const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
   const modalRef = useRef(null);
 
   const galleryItems = [
-    { type: "image", src: "/palmetto/pal-2.jpg", alt: "Image 1" },
-    { type: "image", src: "/palmetto/pal-3.png", alt: "Image 2" },
+    { type: "image", src: "/palmetto/pal-2.webp", alt: "Image 1" },
+    { type: "image", src: "/palmetto/pal-3.webp", alt: "Image 2" },
+    {
+      type: "image",
+      src: "/palmetto/palmetto-testimonial.webp",
+      alt: "Image 2",
+    },
   ];
 
   useEffect(() => {
@@ -57,42 +63,86 @@ const GRNPalmetto = () => {
 
       {/* gallery */}
       <div className="mt-8">
-        <div className="overflow-x-auto scrollbar scrollbar-thumb-blue-400">
+        <div className="overflow-x-auto scrollbar scrollbar-thumb-blue-700">
           <div className="flex gap-4 pb-4" style={{ minWidth: "max-content" }}>
             {galleryItems.map((item, index) => (
               <div
                 key={index}
-                className="cursor-pointer w-64 h-48 bg-gray-200 flex-shrink-0"
-                onClick={() => setSelectedItem(item)}
+                className="cursor-pointer w-64 h-48 bg-blue-200 flex-shrink-0"
+                onClick={() => {
+                  setSelectedItem(item);
+                  setSelectedIndex(index);
+                }}
               >
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  className="w-full h-full object-cover"
-                />
+                {item.type === "image" ? (
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span>PDF: {item.alt}</span>
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </div>
-
       {selectedItem && (
         <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
           <div className="max-w-3xl max-h-[80vh] relative">
-            <button
-              className="absolute font-bold top-[-70px] right-4 text-4xl px-3 py-1 rounded"
-              onClick={() => setSelectedItem(null)}
-            >
-              &times;
-            </button>
-            <img
-              src={selectedItem.src}
-              alt={selectedItem.alt}
-              className="max-w-full max-h-full"
-            />
+            <div className="absolute top-[-70px] right-4 flex items-center space-x-4">
+              <button
+                className="font-bold text-4xl px-3 py-1 shadow-xl backdrop-blur-lg border-2 border-blue-500"
+                onClick={() => {
+                  const newIndex =
+                    (selectedIndex - 1 + galleryItems.length) %
+                    galleryItems.length;
+                  setSelectedItem(galleryItems[newIndex]);
+                  setSelectedIndex(newIndex);
+                }}
+              >
+                &#8592;
+              </button>
+              <button
+                className="font-bold text-4xl px-3 py-1 shadow-xl backdrop-blur-lg border-2 border-blue-500"
+                onClick={() => {
+                  const newIndex = (selectedIndex + 1) % galleryItems.length;
+                  setSelectedItem(galleryItems[newIndex]);
+                  setSelectedIndex(newIndex);
+                }}
+              >
+                &#8594;
+              </button>
+              <button
+                className="font-bold text-4xl px-3 py-1 shadow-xl backdrop-blur-lg border-2 border-blue-500"
+                onClick={() => {
+                  setSelectedItem(null);
+                  setSelectedIndex(null);
+                }}
+              >
+                &times;
+              </button>
+            </div>
+            {selectedItem.type === "image" ? (
+              <img
+                src={selectedItem.src}
+                alt={selectedItem.alt}
+                className="max-w-[80vh] max-h-[80vh] overflow-y-auto"
+              />
+            ) : (
+              <iframe
+                src={selectedItem.src}
+                className="w-[80vh] h-[80vh]"
+                title={selectedItem.alt}
+              />
+            )}
           </div>
         </div>
       )}
+      {/* next section */}
       <div className="flex flex-col md:flex-row gap-4">
         <div className="md:w-1/2 flex gap-4 flex-col p-6 rounded bg-blue-800 dark:bg-blue-50 dark:bg-opacity-10 shadow-xl backdrop-blur-lg border-2 border-blue-500">
           <h1 className="text-2xl font-bold mb-4">The Strategy</h1>

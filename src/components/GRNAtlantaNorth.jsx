@@ -3,13 +3,17 @@ import { Link } from "react-router-dom";
 
 const GRNAtlantaNorth = () => {
   const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
   const modalRef = useRef(null);
 
   const galleryItems = [
-    { type: "image", src: "/atlanta/atl-1.png", alt: "Image 1" },
-    { type: "image", src: "/atlanta/atl-2.png", alt: "Image 2" },
-    { type: "image", src: "/atlanta/atl-3.jpg", alt: "Image 3" },
-    { type: "image", src: "/atlanta/Tagline.png", alt: "Image 4" },
+    { type: "image", src: "/atlanta/atl-2.webp", alt: "Image 1" },
+    { type: "image", src: "/atlanta/atl-1.webp", alt: "Image 2" },
+    { type: "image", src: "/atlanta/Tagline.webp", alt: "Image 3" },
+    { type: "image", src: "/atlanta/atl-3.webp", alt: "Image 4" },
+    { type: "image", src: "/atlanta/atlinfo1.webp", alt: "Image 5" },
+    { type: "image", src: "/atlanta/atlinfo2.webp", alt: "Image 6" },
+    { type: "image", src: "/atlanta/atlinfo3.webp", alt: "Image 7" },
   ];
 
   useEffect(() => {
@@ -69,46 +73,81 @@ const GRNAtlantaNorth = () => {
             {galleryItems.map((item, index) => (
               <div
                 key={index}
-                className="cursor-pointer w-64 h-48 bg-gray-200 flex-shrink-0"
-                onClick={() => setSelectedItem(item)}
+                className="cursor-pointer w-64 h-48 bg-blue-200 flex-shrink-0"
+                onClick={() => {
+                  setSelectedItem(item);
+                  setSelectedIndex(index);
+                }}
               >
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  className="w-full h-full object-cover"
-                />
+                {item.type === "image" ? (
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span>PDF: {item.alt}</span>
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </div>
-
       {selectedItem && (
         <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
           <div className="max-w-3xl max-h-[80vh] relative">
-            <button
-              className="absolute font-bold top-[-70px] right-4 text-4xl px-3 py-1 dark:bg-opacity-10 shadow-xl backdrop-blur-lg border-2 border-blue-500"
-              onClick={() => setSelectedItem(null)}
-            >
-              &times;
-            </button>
+            <div className="absolute top-[-70px] right-4 flex items-center space-x-4">
+              <button
+                className="font-bold text-4xl px-3 py-1 shadow-xl backdrop-blur-lg border-2 border-blue-500"
+                onClick={() => {
+                  const newIndex =
+                    (selectedIndex - 1 + galleryItems.length) %
+                    galleryItems.length;
+                  setSelectedItem(galleryItems[newIndex]);
+                  setSelectedIndex(newIndex);
+                }}
+              >
+                &#8592;
+              </button>
+              <button
+                className="font-bold text-4xl px-3 py-1 shadow-xl backdrop-blur-lg border-2 border-blue-500"
+                onClick={() => {
+                  const newIndex = (selectedIndex + 1) % galleryItems.length;
+                  setSelectedItem(galleryItems[newIndex]);
+                  setSelectedIndex(newIndex);
+                }}
+              >
+                &#8594;
+              </button>
+              <button
+                className="font-bold text-4xl px-3 py-1 shadow-xl backdrop-blur-lg border-2 border-blue-500"
+                onClick={() => {
+                  setSelectedItem(null);
+                  setSelectedIndex(null);
+                }}
+              >
+                &times;
+              </button>
+            </div>
             {selectedItem.type === "image" ? (
               <img
                 src={selectedItem.src}
                 alt={selectedItem.alt}
-                className="max-w-full max-h-full"
+                className="max-w-[80vh] max-h-[80vh] overflow-y-auto"
               />
             ) : (
-              <video
+              <iframe
                 src={selectedItem.src}
-                autoPlay
-                controls
-                className="max-w-full max-h-full"
+                className="w-[80vh] h-[80vh]"
+                title={selectedItem.alt}
               />
             )}
           </div>
         </div>
       )}
+      {/* next section */}
       <div className="flex flex-col md:flex-row gap-4">
         <div className="md:w-1/2 flex gap-4 flex-col bg-blue-800 dark:bg-blue-50 dark:bg-opacity-10 shadow-xl backdrop-blur-lg border-2 border-blue-500 p-6">
           <h1 className="text-2xl font-bold mb-4">Logo redesign</h1>

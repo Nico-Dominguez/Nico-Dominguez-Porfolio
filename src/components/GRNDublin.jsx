@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 
 const GRNDublin = () => {
   const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
   const modalRef = useRef(null);
-
   const galleryItems = [
-    { type: "image", src: "/dublin/dub-1.png", alt: "Image 1" },
-    { type: "image", src: "/dublin/dub-2.png", alt: "Image 2" },
-    { type: "image", src: "/dublin/dub-3.png", alt: "Image 3" },
-    { type: "image", src: "/dublin/dub-4.png", alt: "Image 4" },
+    { type: "image", src: "/dublin/dub-1.webp", alt: "Image 1" },
+    { type: "pdf", src: "/dublin/metro-eng.pdf", alt: "PDF 3" },
+    { type: "image", src: "/dublin/dub-2.webp", alt: "Image 2" },
+    { type: "image", src: "/dublin/dub-4.webp", alt: "Image 4" },
+    { type: "image", src: "/dublin/Facebook-Header.webp", alt: "Image 4" },
+    { type: "pdf", src: "/dublin/GRN-Dublin-Services.pdf", alt: "PDF 1" },
+    { type: "pdf", src: "/dublin/grndublinimpact.pdf", alt: "PDF 2" },
   ];
 
   useEffect(() => {
@@ -62,41 +65,75 @@ const GRNDublin = () => {
             {galleryItems.map((item, index) => (
               <div
                 key={index}
-                className="cursor-pointer w-64 h-48 bg-gray-200 flex-shrink-0"
-                onClick={() => setSelectedItem(item)}
+                className="cursor-pointer w-64 h-48 bg-blue-200 flex-shrink-0"
+                onClick={() => {
+                  setSelectedItem(item);
+                  setSelectedIndex(index);
+                }}
               >
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  className="w-full h-full object-cover"
-                />
+                {item.type === "image" ? (
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span>PDF: {item.alt}</span>
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </div>
-
       {selectedItem && (
         <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
           <div className="max-w-3xl max-h-[80vh] relative">
-            <button
-              className="absolute font-bold top-[-70px] right-4 text-4xl px-3 py-1 shadow-xl backdrop-blur-lg border-2 border-blue-500"
-              onClick={() => setSelectedItem(null)}
-            >
-              &times;
-            </button>
+            <div className="absolute top-[-70px] right-4 flex items-center space-x-4">
+              <button
+                className="font-bold text-4xl px-3 py-1 shadow-xl backdrop-blur-lg border-2 border-blue-500"
+                onClick={() => {
+                  const newIndex =
+                    (selectedIndex - 1 + galleryItems.length) %
+                    galleryItems.length;
+                  setSelectedItem(galleryItems[newIndex]);
+                  setSelectedIndex(newIndex);
+                }}
+              >
+                &#8592;
+              </button>
+              <button
+                className="font-bold text-4xl px-3 py-1 shadow-xl backdrop-blur-lg border-2 border-blue-500"
+                onClick={() => {
+                  const newIndex = (selectedIndex + 1) % galleryItems.length;
+                  setSelectedItem(galleryItems[newIndex]);
+                  setSelectedIndex(newIndex);
+                }}
+              >
+                &#8594;
+              </button>
+              <button
+                className="font-bold text-4xl px-3 py-1 shadow-xl backdrop-blur-lg border-2 border-blue-500"
+                onClick={() => {
+                  setSelectedItem(null);
+                  setSelectedIndex(null);
+                }}
+              >
+                &times;
+              </button>
+            </div>
             {selectedItem.type === "image" ? (
               <img
                 src={selectedItem.src}
                 alt={selectedItem.alt}
-                className="max-w-full max-h-full"
+                className="max-w-[80vh] max-h-[80vh] overflow-y-auto"
               />
             ) : (
-              <video
+              <iframe
                 src={selectedItem.src}
-                autoPlay
-                controls
-                className="max-w-full max-h-full"
+                className="w-[80vh] h-[80vh]"
+                title={selectedItem.alt}
               />
             )}
           </div>
