@@ -14,6 +14,7 @@ const GRNAtlantaNorth = () => {
     { type: "image", src: "/atlanta/atlinfo1.webp", alt: "Image 5" },
     { type: "image", src: "/atlanta/atlinfo2.webp", alt: "Image 6" },
     { type: "image", src: "/atlanta/atlinfo3.webp", alt: "Image 7" },
+    { type: "youtube", videoId: "hgEbQWhl1Bc", alt: "YouTube Video" },
   ];
 
   useEffect(() => {
@@ -79,15 +80,21 @@ const GRNAtlantaNorth = () => {
                   setSelectedIndex(index);
                 }}
               >
-                {item.type === "image" ? (
+                {item.type === "image" && (
                   <img
                     src={item.src}
                     alt={item.alt}
                     className="w-full h-full object-cover"
                   />
-                ) : (
+                )}
+                {item.type === "pdf" && (
                   <div className="w-full h-full flex items-center justify-center">
                     <span>PDF: {item.alt}</span>
+                  </div>
+                )}
+                {item.type === "youtube" && (
+                  <div className="w-full h-full flex items-center justify-center bg-red-100">
+                    <span>YouTube: {item.alt}</span>
                   </div>
                 )}
               </div>
@@ -131,18 +138,36 @@ const GRNAtlantaNorth = () => {
                 &times;
               </button>
             </div>
-            {selectedItem.type === "image" ? (
+            {selectedItem.type === "image" && (
               <img
                 src={selectedItem.src}
                 alt={selectedItem.alt}
                 className="max-w-[80vh] max-h-[80vh] overflow-y-auto"
               />
-            ) : (
+            )}
+            {selectedItem.type === "pdf" && (
               <iframe
                 src={selectedItem.src}
                 className="w-[80vh] h-[80vh]"
                 title={selectedItem.alt}
               />
+            )}
+            {selectedItem.type === "youtube" && (
+              <div className="flex flex-col items-center">
+                <div className="w-[80vh] h-[80vh] bg-blue-200">
+                  <span className="text-2xl">
+                    YouTube Video: {selectedItem.alt}
+                  </span>
+                </div>
+                <a
+                  href={`https://www.youtube.com/watch?v=${selectedItem.videoId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors"
+                >
+                  Watch on YouTube
+                </a>
+              </div>
             )}
           </div>
         </div>
