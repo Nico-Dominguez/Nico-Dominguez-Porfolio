@@ -32,7 +32,7 @@ const About = () => {
       animate="visible"
     >
       <motion.h1
-        className="font-serif italic text-4xl font-bold mb-6 text-white"
+        className="font-serif italic text-3xl font-bold mb-6 text-white"
         variants={childVariants}
       >
         About me
