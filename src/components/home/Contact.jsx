@@ -58,7 +58,7 @@ const Contact = () => {
           className="text-center sm:text-left font-bold italic font-serif text-3xl text-white mb-6"
           variants={childVariants}
         >
-          Contact Me:
+          Contact Me
         </motion.h1>
         <motion.div className="flex flex-col gap-6" variants={childVariants}>
           <div className="flex items-center space-x-4">
