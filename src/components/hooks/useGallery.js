@@ -16,8 +16,12 @@ export const useGallery = (initialGalleryItems = []) => {
   }, []);
 
   const handleItemClick = (item, index) => {
-    setSelectedItem(item);
-    setSelectedIndex(index);
+    if (item.type === "youtube") {
+      window.open(`https://www.youtube.com/watch?v=${item.videoId}`, "_blank");
+    } else {
+      setSelectedItem(item);
+      setSelectedIndex(index);
+    }
   };
 
   const handleCloseModal = () => {

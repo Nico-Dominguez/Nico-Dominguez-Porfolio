@@ -21,7 +21,7 @@ const Hero = () => {
             .
           </p>
         </div>
-        <div className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 relative">
+        <div className="w-48 h-48 md:w-64 md:h-64 lg:w-96 lg:h-96 relative">
           <div className="absolute inset-0 bg-blue-200 dark:bg-blue-700 rounded-full transform -rotate-6"></div>
           <img
             src="/Nico-Headshot.png"

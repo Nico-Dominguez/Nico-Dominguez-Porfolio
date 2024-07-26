@@ -8,6 +8,7 @@ import Modal from "../layout/Modal";
 import Strategy from "../layout/Strategy";
 import Result from "../layout/Result";
 import NavigationButtons from "../layout/NavigationButtons";
+import { FaChartLine } from "react-icons/fa";
 
 const GRNDublin = () => {
   const initialGalleryItems = [
@@ -85,7 +86,10 @@ const GRNDublin = () => {
             organizations.
           </p>
         </Strategy>
-        <Result title="The Result">
+        <Result
+          title="The Result"
+          icon={<FaChartLine className="text-green-400" />}
+        >
           <p>
             Developed and executed marketing campaigns: Designed and implemented
             effective marketing strategies, resulting in a 21.8% engagement rate
