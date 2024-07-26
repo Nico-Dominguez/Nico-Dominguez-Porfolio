@@ -2,56 +2,40 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./ThemeContext";
 
-import Hero from "./components/Hero";
-import Navbar from "./components/Nav";
-import About from "./components/About";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
+import Nav from "./components/layout/Nav";
+import Footer from "./components/layout/Footer";
+import ProjectPage from "./pages/ProjectPage";
+import HomePage from "./pages/HomePage";
 
-import GRNPalmetto from "./components/GRNPalmetto";
-import GRNAtlantaNorth from "./components/GRNAtlantaNorth";
-import GRNDublin from "./components/GRNDublin";
-
-// Supports weights 300-800
 import "@fontsource-variable/open-sans";
+
+const BackgroundLayer = () => (
+  <div
+    className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]
+    dark:absolute top-0 dark:z-[-2] dark:h-full dark:w-full dark:bg-[#0e0e0f] dark:bg-[radial-gradient(#ffffff33_1px,#0e1733_1px)] dark:bg-[size:20px_20px]"
+  />
+);
 
 function App() {
   return (
     <ThemeProvider>
       <Router>
-        <div className="min-h-screen text-white font-light bg-gradient-to-bl from-white to-blue-200 dark:bg-gradient-to-bl dark:from-blue-500 dark:to-blue-950">
-          <Navbar />
+        <div className="relative min-h-screen text-white font-light">
+          <BackgroundLayer />
+          <Nav />
           <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
             <Routes>
-              <Route
-                path="/"
-                element={
-                  <>
-                    <Hero />
-                    <div className="flex flex-col xl:flex-row gap-4">
-                      <About />
-                      <Projects />
-                    </div>
-                    <Contact />
-                  </>
-                }
-              />
-              <Route path="/project/grn-palmetto" element={<GRNPalmetto />} />
-              <Route
-                path="/project/grn-atlanta-north"
-                element={<GRNAtlantaNorth />}
-              />
-              <Route path="/project/grn-dublin" element={<GRNDublin />} />
+              <Route path="/" element={<HomePage />} />
+              <Route path="/project/:projectId" element={<ProjectPage />} />
             </Routes>
-            <p className="text-sm font-mono text-center text-blue-700 dark:text-blue-200">
-              made with ❤️ by:{" "}
-              <span className="text-blue-700 dark:text-blue-300">Nico</span>
-            </p>
           </main>
+          <Footer />
         </div>
       </Router>
     </ThemeProvider>
   );
 }
+
+// ... rest of your code
 
 export default App;

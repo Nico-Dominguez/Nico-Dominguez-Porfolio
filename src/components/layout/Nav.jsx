@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { ThemeContext } from "../ThemeContext";
-import ButtonMailto from "./ButtonMailTo";
+import { ThemeContext } from "../../ThemeContext";
+import ButtonMailto from "../common/ButtonMailTo";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);

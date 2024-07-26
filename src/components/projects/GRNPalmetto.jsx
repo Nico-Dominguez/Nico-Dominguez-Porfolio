@@ -36,7 +36,7 @@ const GRNPalmetto = () => {
         GRN Palmetto
       </h1>
       <div className="flex flex-col gap-5">
-        <div className="flex flex-col-reverse items-center gap-6 lg:flex-row-reverse p-6 rounded bg-blue-800 dark:bg-white dark:bg-opacity-10 shadow-xl border-2 border-blue-500">
+        <div className="flex flex-col-reverse items-center gap-6 lg:flex-row-reverse p-6 rounded bg-blue-800 dark:bg-blue-50 dark:bg-opacity-10 backdrop-blur-lg shadow-xl border-2 border-blue-500">
           <p className="lg:w-1/2">
             At GRN Palmetto, where I spent over four years, I dove into research
             and analysis to understand their audience and competitors. I crafted
