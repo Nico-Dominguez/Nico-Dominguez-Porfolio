@@ -47,8 +47,8 @@ const GRNDublin = () => {
           While working at GRN Palmetto, GRN Dublin noticed my impactful work
           and reached out for help with their branding. Eager for the challenge,
           I jumped in to revitalize their brand and create a consistent image. I
-          started with thorough industry research and worked closely with
-          President Bill Owad to develop content that truly captured their
+          started with thorough industry research and continue to work closely
+          with President Bill Owad to develop content that captures their
           company’s essence, successfully refreshing their brand identity.
         </p>
       </ProjectInfo>
