@@ -25,7 +25,7 @@ const ProjectPage = () => {
   return (
     <div className="project-page">
       <Link to="/" className="text-blue-500 hover:underline mb-4 inline-block">
-        &larr; Back to Projects
+        &larr; Back to home
       </Link>
       {renderProject()}
     </div>

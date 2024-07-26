@@ -1,11 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { motion } from "framer-motion";
+import useGallery from "../hooks/useGallery";
+import Header from "../layout/Header";
+import ProjectInfo from "../layout/ProjectInfo";
+import Gallery from "../layout/Gallery";
+import Modal from "../layout/Modal";
+import Strategy from "../layout/Strategy";
+import Result from "../layout/Result";
+import NavigationButtons from "../layout/NavigationButtons";
 
 const GRNDublin = () => {
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [selectedIndex, setSelectedIndex] = useState(null);
-  const modalRef = useRef(null);
-  const galleryItems = [
+  const initialGalleryItems = [
     { type: "image", src: "/dublin/dub-1.webp", alt: "Image 1" },
     { type: "pdf", src: "/dublin/metro-eng.pdf", alt: "PDF 3" },
     { type: "image", src: "/dublin/dub-2.webp", alt: "Image 2" },
@@ -15,134 +20,49 @@ const GRNDublin = () => {
     { type: "pdf", src: "/dublin/grndublinimpact.pdf", alt: "PDF 2" },
   ];
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
-        setSelectedItem(null);
-      }
-    };
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
+  const {
+    galleryItems,
+    selectedItem,
+    selectedIndex,
+    handleItemClick,
+    handleCloseModal,
+    handlePrevItem,
+    handleNextItem,
+  } = useGallery(initialGalleryItems);
 
   return (
-    <div className="flex flex-col gap-4 p-6">
-      <h1 className="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-300">
-        GRN Dublin
-      </h1>
-      <div className="flex flex-col gap-5 bg-blue-800 dark:bg-blue-50 dark:bg-opacity-10 shadow-xl backdrop-blur-lg border-2 border-blue-500 rounded">
-        <div className="flex flex-col-reverse items-center gap-6 lg:flex-row-reverse p-6">
-          <p className="md:w-1/2">
-            While working at GRN Palmetto, GRN Dublin noticed my impactful work
-            and reached out for help with their branding. Eager for the
-            challenge, I jumped in to revitalize their brand and create a
-            consistent image. I started with thorough industry research and
-            worked closely with President Bill Owad to develop content that
-            truly captured their company’s essence, successfully refreshing
-            their brand identity.
-          </p>
-          <div className="md:w-1/2 flex flex-col text-left ml-10  gap-5 lg:gap-14 justify-center">
-            <div>
-              <h3 className="font-bold text-xl lg:text-2xl mb-3">My Role:</h3>
-              <p className="font-serif italic">Digital Marketer</p>
-            </div>
-            <div>
-              <h3 className="font-bold text-xl lg:text-2xl">Date:</h3>
-              <p className="font-serif italic">August 2022 - Present</p>
-            </div>
-          </div>
-        </div>
-        {/* Your existing content here */}
-      </div>
-
-      {/* gallery */}
-      <div className="mt-8">
-        <div className="overflow-x-auto scrollbar scrollbar-thumb-blue-700">
-          <div className="flex gap-4 pb-4" style={{ minWidth: "max-content" }}>
-            {galleryItems.map((item, index) => (
-              <div
-                key={index}
-                className="cursor-pointer w-64 h-48 bg-blue-200 flex-shrink-0"
-                onClick={() => {
-                  setSelectedItem(item);
-                  setSelectedIndex(index);
-                }}
-              >
-                {item.type === "image" ? (
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <span>PDF: {item.alt}</span>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="p-6 flex flex-col gap-4"
+    >
+      <Header title="GRN Dublin" />
+      <ProjectInfo
+        role="Digital Marketing Specialist"
+        date="August 2022 - Present"
+      >
+        <p>
+          While working at GRN Palmetto, GRN Dublin noticed my impactful work
+          and reached out for help with their branding. Eager for the challenge,
+          I jumped in to revitalize their brand and create a consistent image. I
+          started with thorough industry research and worked closely with
+          President Bill Owad to develop content that truly captured their
+          company’s essence, successfully refreshing their brand identity.
+        </p>
+      </ProjectInfo>
+      <Gallery items={galleryItems} onItemClick={handleItemClick} />
       {selectedItem && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
-          <div className="max-w-3xl max-h-[80vh] relative">
-            <div className="absolute top-[-70px] right-4 flex items-center space-x-4">
-              <button
-                className="font-bold text-4xl px-3 py-1 shadow-xl backdrop-blur-lg border-2 border-blue-500"
-                onClick={() => {
-                  const newIndex =
-                    (selectedIndex - 1 + galleryItems.length) %
-                    galleryItems.length;
-                  setSelectedItem(galleryItems[newIndex]);
-                  setSelectedIndex(newIndex);
-                }}
-              >
-                &#8592;
-              </button>
-              <button
-                className="font-bold text-4xl px-3 py-1 shadow-xl backdrop-blur-lg border-2 border-blue-500"
-                onClick={() => {
-                  const newIndex = (selectedIndex + 1) % galleryItems.length;
-                  setSelectedItem(galleryItems[newIndex]);
-                  setSelectedIndex(newIndex);
-                }}
-              >
-                &#8594;
-              </button>
-              <button
-                className="font-bold text-4xl px-3 py-1 shadow-xl backdrop-blur-lg border-2 border-blue-500"
-                onClick={() => {
-                  setSelectedItem(null);
-                  setSelectedIndex(null);
-                }}
-              >
-                &times;
-              </button>
-            </div>
-            {selectedItem.type === "image" ? (
-              <img
-                src={selectedItem.src}
-                alt={selectedItem.alt}
-                className="max-w-[80vh] max-h-[80vh] overflow-y-auto"
-              />
-            ) : (
-              <iframe
-                src={selectedItem.src}
-                className="w-[80vh] h-[80vh]"
-                title={selectedItem.alt}
-              />
-            )}
-          </div>
-        </div>
+        <Modal
+          item={selectedItem}
+          index={selectedIndex}
+          onClose={handleCloseModal}
+          onPrev={handlePrevItem}
+          onNext={handleNextItem}
+        />
       )}
-      {/* next section */}
       <div className="flex flex-col md:flex-row gap-4">
-        <div className="md:w-1/2 flex gap-4 flex-col p-6 bg-blue-800 dark:bg-blue-50 dark:bg-opacity-10 shadow-xl backdrop-blur-lg border-2 border-blue-500">
-          <h1 className="text-2xl font-bold mb-4">Marketing Content</h1>
+        <Strategy title="Marketing Content">
           <p>
             Revamping GRN Dublin’s social media and marketing content was both
             exciting and challenging. They wanted a complete content rebranding
@@ -164,9 +84,8 @@ const GRNDublin = () => {
             skills in client collaboration and content creation for large
             organizations.
           </p>
-        </div>
-        <div className="md:w-1/2 flex gap-4 flex-col p-6 bg-blue-800 dark:bg-blue-50 dark:bg-opacity-10 shadow-xl backdrop-blur-lg border-2 border-blue-500 ">
-          <h1 className="text-2xl font-bold mb-4">The Result</h1>
+        </Strategy>
+        <Result title="The Result">
           <p>
             Developed and executed marketing campaigns: Designed and implemented
             effective marketing strategies, resulting in a 21.8% engagement rate
@@ -183,24 +102,13 @@ const GRNDublin = () => {
             and showcasing proficiency in tools essential for high-quality
             presentations.
           </p>
-        </div>
+        </Result>
       </div>
-
-      <div className="flex w-full gap-4 justify-center mt-7">
-        <Link
-          to="/project/grn-atlanta-north"
-          className="w-1/4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300 text-center shadow-lg shadow-blue-500/50"
-        >
-          Previous
-        </Link>
-        <Link
-          to="/project/grn-palmetto"
-          className="w-1/4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300 text-center shadow-lg shadow-blue-500/50"
-        >
-          Next
-        </Link>
-      </div>
-    </div>
+      <NavigationButtons
+        prevLink="/project/grn-atlanta-north"
+        nextLink="/project/grn-palmetto"
+      />
+    </motion.div>
   );
 };
 

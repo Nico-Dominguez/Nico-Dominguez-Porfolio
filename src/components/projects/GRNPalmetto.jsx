@@ -1,176 +1,69 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { motion } from "framer-motion";
+import useGallery from "../hooks/useGallery";
+import Header from "../layout/Header";
+import ProjectInfo from "../layout/ProjectInfo";
+import Gallery from "../layout/Gallery";
+import Modal from "../layout/Modal";
+import Strategy from "../layout/Strategy";
+import Result from "../layout/Result";
+import NavigationButtons from "../layout/NavigationButtons";
 
 const GRNPalmetto = () => {
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [selectedIndex, setSelectedIndex] = useState(null);
-  const modalRef = useRef(null);
-
-  const galleryItems = [
+  const initialGalleryItems = [
     { type: "image", src: "/palmetto/pal-2.webp", alt: "Image 1" },
     { type: "image", src: "/palmetto/pal-3.webp", alt: "Image 2" },
     {
       type: "image",
       src: "/palmetto/palmetto-testimonial.webp",
-      alt: "Image 2",
+      alt: "Image 3",
     },
     { type: "youtube", videoId: "uN-TuCufmZ4", alt: "YouTube Video" },
   ];
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
-        setSelectedItem(null);
-      }
-    };
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
+  const {
+    galleryItems,
+    selectedItem,
+    selectedIndex,
+    handleItemClick,
+    handleCloseModal,
+    handlePrevItem,
+    handleNextItem,
+  } = useGallery(initialGalleryItems);
 
   return (
-    <div className="p-6 flex flex-col gap-4">
-      <h1 className="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-300">
-        GRN Palmetto
-      </h1>
-      <div className="flex flex-col gap-5">
-        <div className="flex flex-col-reverse items-center gap-6 lg:flex-row-reverse p-6 rounded bg-blue-800 dark:bg-blue-50 dark:bg-opacity-10 backdrop-blur-lg shadow-xl border-2 border-blue-500">
-          <p className="lg:w-1/2">
-            At GRN Palmetto, where I spent over four years, I dove into research
-            and analysis to understand their audience and competitors. I crafted
-            a brand strategy focused on simplicity, authenticity, and
-            consistency. This included designing a new logo and establishing a
-            cohesive visual identity and tone of voice. The result? A more
-            recognizable brand with heightened awareness and customer
-            engagement.
-          </p>
-          <div className="w-1/2 flex flex-col text-left ml-10  gap-5 lg:gap-14 justify-center">
-            <div>
-              <h3 className="font-bold text-xl lg:text-2xl mb-3">My Role:</h3>
-              <p className="italic font-serif">
-                Marketing Communications Specialist
-              </p>
-            </div>
-            <div>
-              <h3 className="font-bold text-xl lg:text-2xl">Date:</h3>
-              <p className="italic font-serif">Janurary 2020 - March 2024</p>
-            </div>
-          </div>
-        </div>
-        {/* Your existing content here */}
-      </div>
-
-      {/* gallery */}
-      <div className="mt-8">
-        <div className="overflow-x-auto scrollbar scrollbar-thumb-blue-700">
-          <div className="flex gap-4 pb-4" style={{ minWidth: "max-content" }}>
-            {galleryItems.map((item, index) => (
-              <div
-                key={index}
-                className="cursor-pointer w-64 h-48 bg-blue-200 flex-shrink-0"
-                onClick={() => {
-                  setSelectedItem(item);
-                  setSelectedIndex(index);
-                }}
-              >
-                {item.type === "image" && (
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    className="w-full h-full object-cover"
-                  />
-                )}{" "}
-                {item.type === "pdf" && (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <span>PDF: {item.alt}</span>
-                  </div>
-                )}
-                {item.type === "youtube" && (
-                  <div className="w-full h-full flex items-center justify-center bg-red-100">
-                    <span>YouTube: {item.alt}</span>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="p-6 flex flex-col gap-4"
+    >
+      <Header title="GRN Palmetto" />
+      <ProjectInfo
+        role="Marketing Communications Specialist"
+        date="Janurary 2020 - March 2024"
+      >
+        <p>
+          At GRN Palmetto, where I spent over four years, I dove into research
+          and analysis to understand their audience and competitors. I crafted a
+          brand strategy focused on simplicity, authenticity, and consistency.
+          This included designing a new logo and establishing a cohesive visual
+          identity and tone of voice. The result? A more recognizable brand with
+          heightened awareness and customer engagement.
+        </p>
+      </ProjectInfo>
+      <Gallery items={galleryItems} onItemClick={handleItemClick} />
       {selectedItem && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
-          <div className="max-w-3xl max-h-[80vh] relative">
-            <div className="absolute top-[-70px] right-4 flex items-center space-x-4">
-              <button
-                className="font-bold text-4xl px-3 py-1 shadow-xl backdrop-blur-lg border-2 border-blue-500"
-                onClick={() => {
-                  const newIndex =
-                    (selectedIndex - 1 + galleryItems.length) %
-                    galleryItems.length;
-                  setSelectedItem(galleryItems[newIndex]);
-                  setSelectedIndex(newIndex);
-                }}
-              >
-                &#8592;
-              </button>
-              <button
-                className="font-bold text-4xl px-3 py-1 shadow-xl backdrop-blur-lg border-2 border-blue-500"
-                onClick={() => {
-                  const newIndex = (selectedIndex + 1) % galleryItems.length;
-                  setSelectedItem(galleryItems[newIndex]);
-                  setSelectedIndex(newIndex);
-                }}
-              >
-                &#8594;
-              </button>
-              <button
-                className="font-bold text-4xl px-3 py-1 shadow-xl backdrop-blur-lg border-2 border-blue-500"
-                onClick={() => {
-                  setSelectedItem(null);
-                  setSelectedIndex(null);
-                }}
-              >
-                &times;
-              </button>
-            </div>
-            {selectedItem.type === "image" && (
-              <img
-                src={selectedItem.src}
-                alt={selectedItem.alt}
-                className="max-w-[80vh] max-h-[80vh] overflow-y-auto"
-              />
-            )}
-            {selectedItem.type === "pdf" && (
-              <iframe
-                src={selectedItem.src}
-                className="w-[80vh] h-[80vh]"
-                title={selectedItem.alt}
-              />
-            )}
-            {selectedItem.type === "youtube" && (
-              <div className="flex flex-col items-center">
-                <div className="w-[80vh] h-[80vh] bg-blue-200">
-                  <span className="text-2xl">
-                    YouTube Video: {selectedItem.alt}
-                  </span>
-                </div>
-                <a
-                  href={`https://www.youtube.com/watch?v=${selectedItem.videoId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors"
-                >
-                  Watch on YouTube
-                </a>
-              </div>
-            )}
-          </div>
-        </div>
+        <Modal
+          item={selectedItem}
+          index={selectedIndex}
+          onClose={handleCloseModal}
+          onPrev={handlePrevItem}
+          onNext={handleNextItem}
+        />
       )}
-      {/* next section */}
       <div className="flex flex-col md:flex-row gap-4">
-        <div className="md:w-1/2 flex gap-4 flex-col p-6 rounded bg-blue-800 dark:bg-blue-50 dark:bg-opacity-10 shadow-xl backdrop-blur-lg border-2 border-blue-500">
-          <h1 className="text-2xl font-bold mb-4">The Strategy</h1>
+        <Strategy title="The Strategy">
           <p>
             Joining GRN Palmetto, I took on the task of crafting a fresh brand
             strategy that truly reflected the company's essence. I started by
@@ -194,9 +87,8 @@ const GRNPalmetto = () => {
             allowed us to tailor our strategies for better engagement and
             satisfaction.
           </p>
-        </div>
-        <div className="md:w-1/2 flex gap-4 flex-col p-6 rounded bg-blue-800 dark:bg-blue-50 dark:bg-opacity-10 shadow-xl backdrop-blur-lg border-2 border-blue-500">
-          <h1 className="text-2xl font-bold mb-4">The Result</h1>
+        </Strategy>
+        <Result title="The Result">
           <p>
             Implemented effective social media strategies: Engaged the target
             audience and fostered community growth, resulting in an 800%
@@ -207,24 +99,13 @@ const GRNPalmetto = () => {
             lead generation, web traffic, and promotional success. Applied
             performance metrics to refine campaigns and drive impactful results.
           </p>
-        </div>
+        </Result>
       </div>
-
-      <div className="flex w-full gap-4 justify-center mt-7">
-        <Link
-          to="/project/grn-dublin"
-          className="w-1/4 px-4 py-2 bg-blue-700 rounded hover:bg-blue-600 transition duration-300 text-center shadow-lg shadow-blue-700/50"
-        >
-          Previous
-        </Link>
-        <Link
-          to="/project/grn-atlanta-north"
-          className="w-1/4 px-4 py-2 bg-blue-700 rounded hover:bg-blue-600 transition duration-300 text-center shadow-lg shadow-blue-700/50"
-        >
-          Next
-        </Link>
-      </div>
-    </div>
+      <NavigationButtons
+        prevLink="/project/grn-dublin"
+        nextLink="/project/grn-atlanta-north"
+      />
+    </motion.div>
   );
 };
 
