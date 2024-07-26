@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { FaEnvelope, FaPhone, FaLinkedin, FaTools } from "react-icons/fa";
 
 const Contact = () => {
   const items = [
@@ -20,50 +22,100 @@ const Contact = () => {
     { title: "React" },
     { title: "Wordpress" },
   ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delay: 0.3,
+        when: "beforeChildren",
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const childVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+  };
+
   return (
-    <div className=" flex flex-col-reverse lg:flex-row gap-4 rounded">
-      <div className="lg:w-1/2 bg-gradient-to-tr from-blue-700 to-blue-500 p-6 rounded flex gap-4 flex-col ">
-        <h1 className="text-center sm:text-left font-bold italic font-serif text-3xl">
+    <motion.div
+      className="flex flex-col-reverse lg:flex-row gap-4 rounded"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.div
+        className="lg:w-1/2 bg-gradient-to-tr from-blue-700 to-blue-500 p-8 rounded-lg shadow-lg overflow-hidden relative"
+        variants={childVariants}
+      >
+        <motion.h1
+          className="text-center sm:text-left font-bold italic font-serif text-3xl text-white mb-6"
+          variants={childVariants}
+        >
           Contact Me:
-        </h1>
-        <div className="flex flex-col gap-12">
-          <div className="flex flex-col text-sm text-center sm:text-left gap-4">
+        </motion.h1>
+        <motion.div className="flex flex-col gap-6" variants={childVariants}>
+          <div className="flex items-center space-x-4">
+            <FaEnvelope className="text-white text-2xl flex-shrink-0" />
             <div>
-              <h2 className="font-bold text-xl">Email</h2>
-              <p className="text-lg">98nicodominguez@gmail.com</p>
+              <h2 className="font-bold text-xl text-white">Email</h2>
+              <p className="text-lg text-blue-100">98nicodominguez@gmail.com</p>
             </div>
+          </div>
+          <div className="flex items-center space-x-4">
+            <FaPhone className="text-white text-2xl flex-shrink-0" />
             <div>
-              <h2 className="font-bold text-xl">Phone</h2>
-              <p className="text-lg">803 587-5992</p>
+              <h2 className="font-bold text-xl text-white">Phone</h2>
+              <p className="text-lg text-blue-100">803 587-5992</p>
             </div>
+          </div>
+          <div className="flex items-center space-x-4">
+            <FaLinkedin className="text-white text-2xl flex-shrink-0" />
             <div>
-              <h2 className="font-bold text-xl">Linkedin</h2>
+              <h2 className="font-bold text-xl text-white">LinkedIn</h2>
               <a
                 href="https://www.linkedin.com/in/nnicodominguez/"
-                className="text-lg hover:text-blue-400"
+                className="text-lg text-blue-100 hover:text-blue-200 transition-colors duration-200"
               >
                 nnicodominguez
               </a>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="lg:w-1/2 bg-gradient-to-tl from-blue-700 to-blue-500 p-6 rounded flex gap-4 flex-col ">
-        <h1 className="text-center sm:text-left font-bold italic font-serif text-3xl">
+        </motion.div>
+        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-300 rounded-full opacity-20 blur-2xl"></div>
+      </motion.div>
+      <motion.div
+        className="lg:w-1/2 bg-gradient-to-tl from-blue-700 to-blue-500 p-8 rounded-lg shadow-lg overflow-hidden relative"
+        variants={childVariants}
+      >
+        <motion.h1
+          className="text-center sm:text-left font-bold italic font-serif text-3xl text-white mb-6"
+          variants={childVariants}
+        >
+          <FaTools className="inline-block mr-2 mb-1" />
           Skills
-        </h1>
-        <div className="flex flex-wrap gap-3">
+        </motion.h1>
+        <motion.div className="flex flex-wrap gap-3" variants={childVariants}>
           {items.map((item, index) => (
-            <div
+            <motion.div
               key={index}
-              className="p-2 py-1 bg-blue-300 text-blue-800 rounded-full select-none font-bold border-2 border-blue-400"
+              className="p-2 py-1 bg-blue-100 text-blue-800 rounded-full select-none font-bold border-2 border-blue-200 shadow-md hover:shadow-lg transition-shadow duration-200"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               {item.title}
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
-    </div>
+        </motion.div>
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-300 rounded-full opacity-20 blur-2xl"></div>
+      </motion.div>
+    </motion.div>
   );
 };
 

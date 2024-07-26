@@ -26,7 +26,7 @@ const Hero = () => {
           <img
             src="/Nico-Headshot.png"
             alt="Nico's headshot"
-            className="absolute inset-0 w-full h-full object-cover rounded-full border-4 border-white dark:border-blue-900 shadow-lg transform rotate-3 transition-transform hover:rotate-0"
+            className="absolute inset-0 w-full h-full object-cover rounded-full border-4 border-blue-900 shadow-lg transform rotate-3 transition-transform hover:rotate-0"
           />
         </div>
       </div>
