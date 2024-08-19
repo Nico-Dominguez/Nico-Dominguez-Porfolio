@@ -24,7 +24,7 @@ const Hero = () => {
         <div className="w-48 h-48 md:w-64 md:h-64 lg:w-96 lg:h-96 relative">
           <div className="absolute inset-0 bg-blue-200 dark:bg-blue-700 rounded-full transform -rotate-6"></div>
           <img
-            src="/Nico-Headshot.png"
+            src="/Nico-Headshot-1-min.png"
             alt="Nico's headshot"
             className="absolute inset-0 w-full h-full object-cover rounded-full border-4 border-blue-900 shadow-lg transform rotate-3 transition-transform hover:rotate-0"
           />
