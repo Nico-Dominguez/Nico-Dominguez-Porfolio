@@ -84,7 +84,7 @@ const Navbar = () => {
               className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg text-center hover:bg-blue-700 transition-colors duration-200"
             />
             <a
-              href="/Nicolas-Dominguez--Resume.docx.pdf"
+              href="/NicolasDominguezResume.docx.pdf"
               className="w-full py-2 px-4 bg-gray-200 dark:bg-gray-700 text-blue-800 dark:text-white rounded-lg text-center hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
             >
               Resume
