@@ -26,8 +26,9 @@ const Navbar = () => {
             className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg text-center hover:bg-blue-700 transition-colors duration-200"
           />
           <a
-            href="/Nicolas-Dominguez--Resume.docx.pdf"
+            href="/NicolasDominguezResume.docx.pdf"
             className="text-blue-700 hover:text-blue-900 dark:text-white hover:underline"
+            target="_blank"
           >
             Resume
           </a>
