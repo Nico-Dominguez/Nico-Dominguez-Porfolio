@@ -26,7 +26,7 @@ const Navbar = () => {
             className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg text-center hover:bg-blue-700 transition-colors duration-200"
           />
           <a
-            href="/NicolasDominguezResume.docx.pdf"
+            href="/Nicolas-Dominguez-Resume.pdf"
             className="text-blue-700 hover:text-blue-900 dark:text-white hover:underline"
             target="_blank"
           >
@@ -84,7 +84,7 @@ const Navbar = () => {
               className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg text-center hover:bg-blue-700 transition-colors duration-200"
             />
             <a
-              href="/NicolasDominguezResume.docx.pdf"
+              href="/Nicolas-Dominguez-Resume.pdf"
               className="w-full py-2 px-4 bg-gray-200 dark:bg-gray-700 text-blue-800 dark:text-white rounded-lg text-center hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
             >
               Resume
